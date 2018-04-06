@@ -143,54 +143,56 @@ $('document').ready(function(){
 			$('.sidebar').css('background-color', accentColor).css('border-right', '1px solid transparent');
 		}
 		$(window).scroll(function() {				//CHANGE COLOR OF SIDEBAR WITH SCROLL
-			var isVisible = $('header');
-			var navbar = $('.sidebar');
+			if ($('header').length !== 0){
+				var isVisible = $('header');
+				var navbar = $('.sidebar');
+				var path = $('#nav-button svg path');
+				var line = $('#nav-button svg line');
+				var sheepLogo = $('svg .st0');
+				var menuItems = $('nav ul li a');
+				var white = '#ffffff';
+				var grey = '#434343';
 			
-			var path = $('#nav-button svg path');
-			var line = $('#nav-button svg line');
-			var sheepLogo = $('svg .st0');
-			var menuItems = $('nav ul li a');
-			var white = '#ffffff';
-			var grey = '#434343';
-			var top_of_element = isVisible.offset().top;
-			var bottom_of_element = isVisible.offset().top + isVisible.outerHeight();
-			var bottom_of_screen = $(window).scrollTop() + window.innerHeight;
-			var top_of_screen = $(window).scrollTop();
-			
-	
-			if((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
-				// The element is visible, do something
-				if ($('.client-content').length !== 0){
-					console.log('no element, visible');
-					$('.sidebar').css('background-color', accentColor).css('border-right', '1px solid transparent');
-					sheepLogo.css('fill', white);
-					menuItems.css('color', white);
-					$('.title h1').css('color', white);
-					$('#hamburger').css('color', white);
-					$('#x').css('color', white);
-					
-				} else {
-					navbar.css('background-color', grey);
-					console.log('element, visible');
-				} 
-				/**/
-			} else {
-				// The element is not visible, do something else
-				if ($('.client-content').length !== 0){
-					console.log('no element not visible');
-					$('.sidebar').css('background-color', white).css('border-right', '1px solid #ccc');
-					sheepLogo.css('fill', grey);
-					menuItems.css('color', grey);
-					$('.title h1').css('color', grey);
-					$('#hamburger').css('color', grey);
-					$('#x').css('color', grey);
-				} else {
-					navbar.css('background-color', color);
-					console.log('element not visible');
-				}
+				var top_of_element = isVisible.offset().top;
+				var bottom_of_element = isVisible.offset().top + isVisible.outerHeight();
+				var bottom_of_screen = $(window).scrollTop() + window.innerHeight;
+				var top_of_screen = $(window).scrollTop();
 				
-				//$('section', this).css('opacity', 0);
-				/**/
+		
+				if((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
+					// The element is visible, do something
+					if ($('.client-content').length !== 0){
+						console.log('no element, visible');
+						$('.sidebar').css('background-color', accentColor).css('border-right', '1px solid transparent');
+						sheepLogo.css('fill', white);
+						menuItems.css('color', white);
+						$('.title h1').css('color', white);
+						$('#hamburger').css('color', white);
+						$('#x').css('color', white);
+						
+					} else {
+						navbar.css('background-color', grey);
+						console.log('element, visible');
+					} 
+					/**/
+				} else {
+					// The element is not visible, do something else
+					if ($('.client-content').length !== 0){
+						console.log('no element not visible');
+						$('.sidebar').css('background-color', white).css('border-right', '1px solid #ccc');
+						sheepLogo.css('fill', grey);
+						menuItems.css('color', grey);
+						$('.title h1').css('color', grey);
+						$('#hamburger').css('color', grey);
+						$('#x').css('color', grey);
+					} else {
+						navbar.css('background-color', color);
+						console.log('element not visible');
+					}
+					
+					//$('section', this).css('opacity', 0);
+					/**/
+				}
 			}
 		});
 	} else {
