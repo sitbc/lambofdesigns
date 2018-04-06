@@ -1,0 +1,130 @@
+@charset "utf-8";
+/* CSS Document */
+
+#box{
+    width: 190px;
+    font-size: 1.2em;
+    line-height: 20px;
+    top: -180px;
+    /*left: 0px; /* change this value to place the menu higher or lower */
+    position: fixed;
+    z-index: 100;
+}
+
+#tab{
+	clear: both;
+    float: left;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 99;
+	margin-left: 25px;
+}
+
+#tab li span{
+    display: block;
+    padding: 0 5px;
+    position: relative;
+}
+
+#links{
+    width: 100px;
+    padding: 10px;
+    float: left;
+	background-color: rgba(0,0,0,.6);
+}
+
+.menu-show, .menu-hide{
+    /* we specify the transition length for hiding and showing */
+            transition: margin-top .2s ease-in;
+    -webkit-transition: margin-top .2s ease-in;
+}
+
+.menu-hide{
+    margin-top:0px;
+}
+
+.menu-show{
+    margin-top:180px;
+}
+
+#arrow, .bt{
+    cursor: pointer;
+}
+
+#arrow {
+	width: 50px;
+	height: 50px;
+	background:url(../img/menu-toggle-dark.png);
+	}
+
+.bt{
+    width: 80px;
+    height: 40px;
+   /* margin: -1px;*/
+    text-align:center;
+
+}
+
+.bt a{
+    line-height: 40px;
+    color: #fff;
+    display: block;
+	text-decoration: none;
+}
+
+.bt a:hover{
+    color: rgba(0,0,0,.6);
+
+}
+
+.bt:hover{
+    transition: background .3s linear;
+    background: #fff;
+         -o-transition: background .3s linear;
+       -moz-transition: background .3s linear;
+    -webkit-transition: background .3s linear;
+}
+
+.deco{
+    width: 100px;
+    float: left;
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+	#links{
+		background-color: rgba(255,255,255,1);
+	}
+	.bt a{
+		color: #000;
+	}
+	#arrow {
+	background:url(../img/menu-toggle-light.png);
+	}
+	.bt a:hover{
+    color: rgba(255,255,255,.6);
+	}
+	.bt:hover{
+    background: rgba(0,0,0,.6);
+	}
+}
+
+@media screen and (max-width: 768px) {
+  	#links{
+	background-color: rgba(255,255,255,1);
+	}
+	.bt a{
+    	color: #000;
+	}
+    #arrow {
+	background:url(../img/menu-toggle-light.png);
+	}
+	.bt a:hover{
+    color: rgba(255,255,255,.6);
+	}
+	.bt:hover{
+    background: rgba(0,0,0,.6);
+	}
+}
