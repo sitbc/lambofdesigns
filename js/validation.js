@@ -12,8 +12,6 @@
             var subject = $('#subject').val();
             var message = $('#message').val();
             
-            console.log(message.length);
-            
          	// Form field validation
             if(name.length == 0){
                 var error = true;
@@ -42,6 +40,8 @@
 				/* Post Ajax function of jQuery to get all the data from the submission of the form as soon as the form sends the values to email.php*/
                 $.post("/wp-content/themes/lambofdesigns-new/js/email.php", $("#contact_form").serialize(),function(result){
                     //Check the result set from email.php file.
+                    
+                    console.log(result);
                     if(result == 'sent'){
                         //If the email is sent successfully, remove the submit button
                         //$('#submit').remove();
@@ -49,7 +49,7 @@
                         $('#captcha_fail').fadeOut(500);
                         $('#mail_success').fadeIn(500);
                         
-                    }else if(result == 'captcha'){
+                    }else if(result == 'robot'){
                         $('#captcha_fail').fadeIn(500);
 
                     }else{

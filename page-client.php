@@ -21,10 +21,10 @@
 			<?php the_content(); ?>
 		</section>
 		<section class="row container-fluid shattered back-button">
-		    <a class="button-link" href="<?php echo get_page_link(8); ?>">
+		    <a class="button-link" href="<?php echo get_post_meta($post->ID, 'button_link', true); ?>">
 				<div class="button animate_bottom">
 					<div class="button-text-mask">
-						<p><img src="<?php bloginfo('template_url') ?>/images/SVG/arrow.svg" alt="arrow"> Back To My Work <img src="<?php bloginfo('template_url') ?>/images/SVG/arrow.svg" alt="arrow"></p>
+						<p><img src="<?php bloginfo('template_url') ?>/images/SVG/arrow.svg" alt="arrow"> <?php echo get_post_meta($post->ID, 'button_text', true); ?> <img src="<?php bloginfo('template_url') ?>/images/SVG/arrow.svg" alt="arrow"></p>
 					</div>
 				</div>
 			</a>

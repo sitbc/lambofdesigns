@@ -1,35 +1,31 @@
-﻿<?php
+<?php
+function isValid() 
+{
+    try {
 
-function post_captcha($user_response) {
-	$fields_string = '';
-	$fields = array(
-		'secret' => '6LfCux0UAAAAAGwyNP9mC_IchBHATuMFQvlkgY-g',
-		'response' => $user_response
-	);
-	foreach($fields as $key=>$value)
-	$fields_string .= $key . '=' . $value . '&';
-	$fields_string = rtrim($fields_string, '&');
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = ['secret'   => '6LfCux0UAAAAAGwyNP9mC_IchBHATuMFQvlkgY-g',
+                 'response' => $_POST['g-recaptcha-response'],
+                 'remoteip' => $_SERVER['REMOTE_ADDR']];
 
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify');
-	curl_setopt($ch, CURLOPT_POST, count($fields));
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, True);
+        $options = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($data) 
+            ]
+        ];
 
-	$result = curl_exec($ch);
-	curl_close($ch);
-
-	return json_decode($result, true);
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        return json_decode($result)->success;
+    }
+    catch (Exception $e) {
+        return null;
+    }
 }
 
-// Call the function post_captcha
-$res = post_captcha($_POST['g-recaptcha-response']);
-
-if (!$res['success']) {
-	// What happens when the CAPTCHA wasn't checked
-	echo 'captcha';
-} else {
-	// If CAPTCHA is successfully completed...
+if (isValid()){
 	$subject = $_REQUEST['subject'] . 'Message received through the website'; // Subject of your email
 	$to = "peter@lambofdesigns.com";  //Recipient's E-mail
 	$charset="UTF-8";
@@ -51,14 +47,10 @@ if (!$res['success']) {
 		// Transfer the value 'sent' to ajax function for showing success message.
 		echo 'sent';
 	}
-	else
-	{
-		// Transfer the value 'failed' to ajax function for showing error message.
-		echo 'failed';
-	}
+} elseif (!isValid()) {
+	echo 'robot';
+} else {
+	echo 'error';
 }
-
-
-
 
 ?>

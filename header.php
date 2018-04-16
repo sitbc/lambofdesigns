@@ -47,6 +47,9 @@
 	<?php 
         if( is_page() and $singlePostJs = get_post_meta($post->ID, 'single-post-js', true) )
         echo $singlePostJs;
+        
+        if( is_page(16) )
+        echo '<script src="https://www.google.com/recaptcha/api.js"></script>';
     ?>
     
     <script>
@@ -112,20 +115,23 @@
 				</svg>
 			</div>
 			<nav>
-				<?php wp_nav_menu(array('menu' => 'Main Nav Menu')); ?>
+				<?php //wp_nav_menu(array('menu' => 'Main Nav Menu')); 
+					$args = array(
+						'theme_location' => 'primary'
+					);
+					wp_nav_menu( $args );
+				?>
 			</nav>
 			<div class="title">
-				<?php $pagename = get_query_var('pagename');  
-				if ( !$pagename && $id > 0 ) {  
-				    // If a static page is set as the front page, $pagename will not be set. Retrieve it from the queried object  
-				    //$post = $wp_query->get_queried_object();  
-				    //$pagename = $post->post_name;  
-				    $pagename = 'lamb of designs';
-				}
-				$title = str_replace('-', ' ', $pagename);
-				?>
-				
-				<h1><?php echo $title; ?></h1>
+				<h1>
+					<?php /*echo $title;*/ $title = get_the_title(); 
+						if ($title == 'Home' || $title == 'Kezdőlap'){
+							$title = 'lamb of designs';
+						}
+						
+						echo esc_html( $title );
+					?>
+				</h1>
 			</div>
 
 			<div id="nav-button" >

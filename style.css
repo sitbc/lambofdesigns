@@ -108,6 +108,22 @@ nav ul li a::before {
     margin-right: 10px;
 }
 
+.nav-item-separate {
+	border-bottom: 1px solid #ffffff;
+	height: 1px;
+	margin: 1em 0;
+	width: 95%;
+}
+
+.lang-item {
+    font-family: "niveau-grotesk-small-caps",sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 0.6em;
+	margin-top: 2em;
+	margin-left: .5em;
+	padding-top: 1em;
+}
 
 header {
 	background: #ffd89b;  /* fallback for old browsers */
@@ -129,6 +145,7 @@ footer {
 	font-weight: 400;
 	font-size: 1.5em;
 	position: relative;
+	text-transform: lowercase;
 }
 
 button {
@@ -350,7 +367,7 @@ a.project:focus {
 	padding:10px; 
 	margin:0 0 5px 0;
 	color: #CC3300; 
-	font-size:12px;
+	font-size: 1em;
 	background-color: #FFBABA;
 	}
 	
@@ -359,7 +376,7 @@ a.project:focus {
 	padding:10px;
 	margin:0 0 5px 0;
 	color: #00CC00; 
-	font-size:12px;
+	font-size:1em;
 	background-color: #B7FBB9;
 	}
 	
@@ -638,6 +655,18 @@ a.button-link:focus {
 #services-header-image .page-heading,
 .header-image .page-heading{
 	top: 80%;
+}
+
+#contact-page .page-heading-contact a,
+#contact-page .page-heading-contact a:visited {
+	text-decoration: none;
+	font-family: "niveau-grotesk-small-caps",sans-serif;
+	font-style: normal;
+	color: #303030;
+	font-weight: 400;
+	font-size: 1.85em;
+	border-bottom: 2px solid;
+	transition: all .6s cubic-bezier(.645,.045,.355,1);
 }
 
 #home-profile p {

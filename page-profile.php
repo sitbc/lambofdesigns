@@ -20,10 +20,10 @@
 			<section id="profile" class="row shattered">
 				<div class="col-md-8 col-lg-5 nopadding content">
 					<?php the_content(); ?>
-					<a class="button-link" href="<?php echo get_page_link(8); ?>">
+					<a class="button-link" href="<?php echo get_post_meta($post->ID, 'button_link', true); ?>">
 						<div class="button animate_bottom">
 							<div class="button-text-mask">
-								<p><img src="<?php bloginfo('template_url') ?>/images/SVG/arrow.svg" alt="arrow"> View My Work <img src="<?php bloginfo('template_url') ?>/images/SVG/arrow.svg" alt="arrow"></p>
+								<p><img src="<?php bloginfo('template_url') ?>/images/SVG/arrow.svg" alt="arrow"> <?php echo get_post_meta($post->ID, 'button_text', true); ?> <img src="<?php bloginfo('template_url') ?>/images/SVG/arrow.svg" alt="arrow"></p>
 							</div>
 						</div>
 					</a>

@@ -9,9 +9,9 @@
         <div class="content-wrapper">
 			<header class="row">
 				<div class="page-heading col-sm-6">
-					<h2>The flock</h2>
+					<h2><?php echo get_post_meta($post->ID, 'title', true); ?></h2>
 					<div class="col-md-8 col-sm-10 col-xs-6 nopadding">
-						<p>Over the years I’ve encountered interesting people and projects. Here are a few.</p>
+						<p><?php echo get_post_meta($post->ID, 'secondary_title', true); ?></p>
 					</div>
 				</div>
 			</header>

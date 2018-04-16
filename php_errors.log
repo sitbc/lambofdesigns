@@ -1,0 +1,3 @@
+[07-Apr-2018 15:45:54 UTC] PHP Fatal error:  Class 'ReCaptcha\ReCaptcha' not found in /home/ubuntu/workspace/wp-content/themes/lambofdesigns-new/js/email.php on line 24
+[07-Apr-2018 15:45:54 UTC] PHP Stack trace:
+[07-Apr-2018 15:45:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-content/themes/lambofdesigns-new/js/email.php:0

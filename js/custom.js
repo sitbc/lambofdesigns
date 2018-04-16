@@ -47,8 +47,20 @@ $('document').ready(function(){
 			init += 1;
 			$('#'+init).css('background-color', colorArray[i]);
 		}
-		
-		
+	}
+	
+	if ($('#contact-page').length !== 0) {
+		$('header').css('height', '100vh');
+		var headerHi = $('header').height();
+		var pageHeaderSize = $('.page-heading-contact').height();
+		var pageHeaderPos = (headerHi / 2) - (pageHeaderSize / 2);
+		$('.page-heading-contact').css('top', pageHeaderPos);
+		$('#contact-page .page-heading-contact a').hover(
+			function(){
+				$(this).css('color', color);
+			}, function(){
+				$(this).css('color', '#303030');
+		});
 	}
 	
 	if ($('.client-content').length !== 0){
@@ -70,8 +82,11 @@ $('document').ready(function(){
 		$('.sharedaddy').addClass('animate_bottom');
 	}
 	
+	$('.lang-item').before('<div class="nav-item-separate animated fadeOutLeft"></div>');
+	$('.lang-item').addClass('animated fadeOutLeft');
+	
 	function navItems(){		
-		$('nav ul li').each(function(i, el){
+		$('nav ul *').each(function(i, el){
 			var del = 30+(i*50);
 			setTimeout(function(){
 				$(el).toggleClass('fadeInLeft').toggleClass('fadeOutLeft');
@@ -162,17 +177,16 @@ $('document').ready(function(){
 				if((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
 					// The element is visible, do something
 					if ($('.client-content').length !== 0){
-						console.log('no element, visible');
 						$('.sidebar').css('background-color', accentColor).css('border-right', '1px solid transparent');
 						sheepLogo.css('fill', white);
 						menuItems.css('color', white);
 						$('.title h1').css('color', white);
 						$('#hamburger').css('color', white);
 						$('#x').css('color', white);
+						$('.nav-item-separate').css('border-color', white);
 						
 					} else {
 						navbar.css('background-color', grey);
-						console.log('element, visible');
 					} 
 					/**/
 				} else {
@@ -185,6 +199,7 @@ $('document').ready(function(){
 						$('.title h1').css('color', grey);
 						$('#hamburger').css('color', grey);
 						$('#x').css('color', grey);
+						$('.nav-item-separate').css('border-color', grey);
 					} else {
 						navbar.css('background-color', color);
 						console.log('element not visible');
@@ -195,6 +210,7 @@ $('document').ready(function(){
 				}
 			}
 		});
+		
 	} else {
 		$('header').removeClass('parallax');
 	}
